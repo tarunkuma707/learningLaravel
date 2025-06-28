@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     //
     public function showUsers(){
-        $allusers   =    User::get();
+        $allusers   =    User::simplePaginate(100);
         return view('users',compact('allusers'));
     }
 
@@ -29,23 +29,29 @@ class UserController extends Controller
         return redirect('allusers')->with('message', 'Record added successfully!');
     }
 
-    function update(Request $request){
+    public function update(Request $request){
         $currentUser    =    User::findorFail($request->id);
         return view('update',compact('currentUser'));
     }
 
-    function updateuser(Request $request){
+
+
+    public function updateuser(Request $request){
          $request->validate([
             'name'=>'required|min:3|max:50',
             'email'=>'required|email|max:100',
-            'password'=>'required|max:8|min:6'
         ]);
         $userId         =   $request->id;
         $user           =   User::find($userId);
         $user->name     =   $request->name;
         $user->email    =   $request->email;
-        $user->password =   $request->password;
         $user->save();
         return redirect('allusers')->with('message', 'Record added successfully!');
+    }
+
+    public function deleteUser(Request $request){
+        $deleteUserId   =   User::find($request->id);
+        $deleteUserId->delete();
+        return redirect('allusers')->with('message', 'User Deleted Successfully!');
     }
 }

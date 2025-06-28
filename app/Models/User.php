@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -33,6 +35,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+     protected static ?string $password;
     /**
      * Get the attributes that should be cast.
      *
@@ -45,4 +48,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    
 }

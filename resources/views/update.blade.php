@@ -26,8 +26,6 @@
         <input type="text" name="name" value="{{ $currentUser->name }}">
         <label for="Email">Email</label>
         <input type="text" name="email" value="{{ $currentUser->email }}">
-        <label for="password">Password</label>
-        <input type="password" name="password" value="">
         <button type="submit" value="submit">Submit</button>
     </form>
 </body>

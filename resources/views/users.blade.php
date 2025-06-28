@@ -27,9 +27,16 @@
                  <td>
                     <a href="/udpate/{{ $item->id }}">Edit</a>
                 </td>
+                <td>
+                   <form action="/delete/{{ $item->id }}" method="POST">
+                    @csrf
+                        <button type="submit" value="submit" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+                   </form>
+                </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+    {{ $allusers->links() }}
 </body>
 </html>

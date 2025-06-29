@@ -10,8 +10,10 @@ class UserController extends Controller
     //
     public function showPostTitle(){
         //$users  = User::with(['post:user_id,title'])->get();
-        $users  =   User::with(["post:user_id,title"])
-                    ->get();
+        // $users  =   User::with(["post:user_id,title"])
+        //             ->simplePaginate(100);
+        $users  =   User::has("post")->with(["post:user_id,title"])
+                    ->simplePaginate(100);
                     return $users;
     }
     public function showUsers(){

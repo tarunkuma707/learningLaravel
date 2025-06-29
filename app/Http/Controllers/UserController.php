@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     //
+    public function showPostTitle(){
+        //$users  = User::with(['post:user_id,title'])->get();
+        $users  =   User::with(["post:user_id,title"])
+                    ->get();
+                    return $users;
+    }
     public function showUsers(){
         $allusers   =    User::simplePaginate(100);
         return view('users',compact('allusers'));

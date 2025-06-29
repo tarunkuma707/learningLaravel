@@ -24,3 +24,5 @@ Route::get('/udpate/{id}',[UserController::class,'update']);
 Route::post('/updateuser/{id}',[UserController::class,'updateuser']);
 
 Route::post('/delete/{id}',[UserController::class,'deleteUser']);
+
+Route::get('/showposts',[UserController::class,'showPostTitle']);
